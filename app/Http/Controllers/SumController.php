@@ -14,17 +14,15 @@ class SumController extends Controller
 
     }
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, SumService $sumService)
     {
         try {
-            $sumService = new SumService($request);
-
             $response = [
-                'msg' => $sumService->execute()
+                'msg' => $sumService->execute($request->get('first_number'), $request->get('second_number'))
             ];
 
             return response()->json($response);
-            
+
         } catch (Exception $e) {
             $response = [
                 'error' => $e->getMessage(),

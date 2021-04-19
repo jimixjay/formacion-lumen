@@ -9,22 +9,12 @@ use Illuminate\Http\Request;
 
 final class SumService
 {
-    private $request;
+    public function __construct() {}
 
-    public function __construct(
-        Request $request
-    )
-    {
-        $this->request             = $request;
-    }
-
-    public function execute()
+    public function execute(int $firstNumber, int $secondNumber)
     {
         try {
-            $firstNum = $this->request->get('first_num');
-            $secondNum = $this->request->get('second_num');
-
-            return $firstNum + $secondNum;
+            return $firstNumber + $secondNumber;
 
         } catch (Exception $e) {
             throw new Exception($e->getMessage(), 500);
