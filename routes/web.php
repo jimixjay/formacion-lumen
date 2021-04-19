@@ -20,4 +20,6 @@ $router->get('/', function () use ($router) {
 $router->group(['middleware' => ['checkKey']], function () use ($router) {
 
     $router->get('/hello-world', 'HelloController');
+
+    $router->get('/sum', 'SumController');
 });
