@@ -16,3 +16,8 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['middleware' => ['checkKey']], function () use ($router) {
+
+    $router->get('/hello-world', 'HelloController');
+});
