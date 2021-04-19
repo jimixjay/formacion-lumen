@@ -1,17 +1,18 @@
 <?php
 
 
-namespace App\Services;
+namespace App\Services\Calculator;
 
 
+use App\Services\Calculator\Calculator;
 use Exception;
 use Illuminate\Http\Request;
 
-final class SumService
+final class SumService implements Calculator
 {
     public function __construct() {}
 
-    public function execute(int $firstNumber, int $secondNumber)
+    public function calculate($firstNumber, $secondNumber)
     {
         try {
             return $firstNumber + $secondNumber;
