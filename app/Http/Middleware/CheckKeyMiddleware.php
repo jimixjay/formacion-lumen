@@ -7,13 +7,11 @@ use Closure;
 
 class CheckKeyMiddleware
 {
-    //const API_KEY = 'formacion-lumen-api-key';
+    const API_KEY = 'formacion-lumen-api-key';
 
     public function handle($request, Closure $next)
     {
-        $apiKey = ApiKey::where(ApiKey::COL_KEY_VALUE, $request->header('api-key'))->first();
-
-        if (!$apiKey) {
+        if ($request->header('api-key') != self::API_KEY) {
             return response('Unauthorized.', 401);
         }
 
